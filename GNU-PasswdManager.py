@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
 from cryptography.fernet import Fernet
@@ -53,7 +54,7 @@ def save_passwords(user, passwords, filename='passwords.json'):
 def register_user():
     user = simpledialog.askstring("Register User", "Username:")
     if user in users:
-        messagebox.showerror("Error", "User already exists.")
+        messagebox.showerror("Error", "The user already exists.")
         return
     password = simpledialog.askstring("Register User", "Password:", show='*')
     if user and password:
@@ -78,7 +79,7 @@ def login_user():
 # Password management functions
 def add_password(user):
     passwords = load_passwords(user)
-    service = simpledialog.askstring("Add Password", "Service Name (e.g., Gmail, Instagram):")
+    service = simpledialog.askstring("Add Password", "Service (e.g., Gmail, Instagram):")
     service_user = simpledialog.askstring("Add Password", "Service Username:")
     password = simpledialog.askstring("Add Password", "Password:", show='*')
 
@@ -103,29 +104,32 @@ def show_passwords(user):
     
     show_window = tk.Toplevel(root)
     show_window.title("Saved Passwords")
+    show_window.geometry("800x800")
 
     tree = ttk.Treeview(show_window, columns=("ID", "Service", "Username", "Password"), show='headings')
     tree.heading("ID", text="ID")
     tree.heading("Service", text="Service")
     tree.heading("Username", text="Username")
     tree.heading("Password", text="Password")
-    
+    tree.pack(expand=True, fill='both')
+
     fernet = Fernet(key)
     for unique_id, item_data in passwords.items():
         service = item_data['service']
         username = item_data['username']
         password = fernet.decrypt(item_data['password'].encode()).decode()
         tree.insert("", tk.END, values=(unique_id, service, username, password))
-    
-    tree.pack(expand=True, fill='both')
 
-# Generate a random password and add it
+    # Add context menu to Treeview
+    tree.bind("<Button-3>", lambda event: show_context_menu(event, tree))
+
+# Generate password and add it
 def generate_password(user):
     length = simpledialog.askinteger("Generate Password", "Password length:", minvalue=8, maxvalue=32)
     if length:
         characters = string.ascii_letters + string.digits + string.punctuation
         password = ''.join(random.choice(characters) for _ in range(length))
-        service = simpledialog.askstring("Generate Password", "Service Name (e.g., Gmail, Instagram):")
+        service = simpledialog.askstring("Generate Password", "Service (e.g., Gmail, Instagram):")
         passwords = load_passwords(user)
         fernet = Fernet(key)
         unique_id = str(len(passwords) + 1)
@@ -135,11 +139,29 @@ def generate_password(user):
             'password': fernet.encrypt(password.encode()).decode()
         }
         save_passwords(user, passwords)
-        messagebox.showinfo("Password Generated", f"Generated password: {password}\nIt has been added to your password list.")
+        messagebox.showinfo("Password Generated", f"Generated password: {password}\nIt has been added to your list.")
     else:
         messagebox.showerror("Error", "Invalid length.")
 
-# Configure the GUI
+# Context menu for Treeview
+def show_context_menu(event, tree):
+    menu = tk.Menu(root, tearoff=0)
+    menu.add_command(label="Copy", command=lambda: copy_selected_item(tree))
+    menu.tk_popup(event.x_root, event.y_root)
+
+def copy_selected_item(tree):
+    try:
+        selected_item = tree.focus()
+        item_values = tree.item(selected_item, "values")
+        if item_values:
+            password = item_values[3]  # Copy the password
+            root.clipboard_clear()
+            root.clipboard_append(password)
+            messagebox.showinfo("Copied", "Password copied to clipboard.")
+    except IndexError:
+        messagebox.showerror("Error", "No item selected.")
+
+# GUI configuration
 key = load_key()
 users = load_data()
 
