@@ -1,4 +1,4 @@
-# GNU-PasswdManager
+# GNU-PasswdManager 2025
 A simple password manager with a graphical user interface built in Python.
 
 ## Features
