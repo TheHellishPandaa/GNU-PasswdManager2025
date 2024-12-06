@@ -51,7 +51,21 @@ pip is the tool used to install Python packages. Check if pip is installed by ru
 ```bash
 pip --version
 ```
-If it shows the version of pip, it is installed correctly. If not, you can install pip manually, but it usually comes installed with Python.
+If it shows the version of pip, it is installed correctly. If not, you can install pip manually, but it usually comes installed with Python
+
+
+## Execute this Script
+
+On Windows 10/11 Open the Command Prompt/PowerShell in Windows (you can search for "cmd" in the Start menu) and put the follow command.
+```bash
+python GNU-PasswdManager.py
+```
+
+On linux/Mac
+
+```bash
+python3 GNU-PasswdManager.py
+```
 
 ## LISENCE
 
