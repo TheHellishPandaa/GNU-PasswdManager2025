@@ -8,7 +8,8 @@ A simple password manager with a graphical user interface built in Python.
 - Secure storage in a JSON file.
 
 ## Requirements
-Install dependencies using:
+Install cryptography dependencies using:
 ```bash
-pip install -r requirements.txt
+pip install cryptography
+
 ```
