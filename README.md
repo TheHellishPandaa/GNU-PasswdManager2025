@@ -23,3 +23,7 @@ Run the installer you downloaded (it will be a .exe file).
   1. Click on "Install Now" to start the standard installation.
 
   2. The installation process will begin. Wait for it to complete. Once finished, you will see a message saying "Setup was successful".
+
+## LISENCE
+
+This program is released under GNU General Public License 
