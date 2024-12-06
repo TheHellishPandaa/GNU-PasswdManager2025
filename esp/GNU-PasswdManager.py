@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
 from cryptography.fernet import Fernet
@@ -7,179 +8,200 @@ import random
 import string
 
 # Funciones de manejo de contraseñas
-def generar_clave():
+def generate_key():
     return Fernet.generate_key()
 
-def cargar_clave(nombre_archivo='clave.key'):
-    if not os.path.exists(nombre_archivo):
-        clave = generar_clave()
-        with open(nombre_archivo, 'wb') as file:
-            file.write(clave)
+def load_key(filename='key.key'):
+    if not os.path.exists(filename):
+        key = generate_key()
+        with open(filename, 'wb') as file:
+            file.write(key)
     else:
-        with open(nombre_archivo, 'rb') as file:
-            clave = file.read()
-    return clave
+        with open(filename, 'rb') as file:
+            key = file.read()
+    return key
 
-def cargar_datos(nombre_archivo='usuarios.json'):
-    if os.path.exists(nombre_archivo):
-        with open(nombre_archivo, 'r') as file:
+def load_data(filename='users.json'):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
             return json.load(file)
     else:
         return {}
 
-def guardar_datos(data, nombre_archivo='usuarios.json'):
-    with open(nombre_archivo, 'w') as file:
+def save_data(data, filename='users.json'):
+    with open(filename, 'w') as file:
         json.dump(data, file, indent=4)
 
-def cargar_contraseñas(usuario, nombre_archivo='contraseñas.json'):
-    if os.path.exists(nombre_archivo):
-        with open(nombre_archivo, 'r') as file:
-            datos = json.load(file)
-            if usuario in datos:
-                return datos[usuario]
+def load_passwords(user, filename='passwords.json'):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            data = json.load(file)
+            if user in data:
+                return data[user]
     return {}
 
-def guardar_contraseñas(usuario, contraseñas, nombre_archivo='contraseñas.json'):
-    if os.path.exists(nombre_archivo):
-        with open(nombre_archivo, 'r') as file:
-            datos = json.load(file)
+def save_passwords(user, passwords, filename='passwords.json'):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            data = json.load(file)
     else:
-        datos = {}
-    datos[usuario] = contraseñas
-    with open(nombre_archivo, 'w') as file:
-        json.dump(datos, file, indent=4)
+        data = {}
+    data[user] = passwords
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=4)
 
-# Funciones de autenticación
-def registrar_usuario():
-    usuario = simpledialog.askstring("Registrar Usuario", "Usuario:")
-    if usuario in usuarios:
+# Funciones de autenticacion
+def register_user():
+    user = simpledialog.askstring("Registrar Usuario", "Nombre de usuario:")
+    if user in users:
         messagebox.showerror("Error", "El usuario ya existe.")
         return
-    contraseña = simpledialog.askstring("Registrar Usuario", "Contraseña:", show='*')
-    if usuario and contraseña:
-        usuarios[usuario] = {'contraseña': contraseña}
-        guardar_datos(usuarios)
-        messagebox.showinfo("Éxito", "Usuario registrado con éxito.")
+    password = simpledialog.askstring("Registrar Usuario", "Contrasena:", show='*')
+    if user and password:
+        users[user] = {'password': password}
+        save_data(users)
+        messagebox.showinfo("Exito", "Usuario registrado con exito.")
     else:
         messagebox.showerror("Error", "Todos los campos son obligatorios.")
 
-def login_usuario():
-    usuario = simpledialog.askstring("Login", "Usuario:")
-    if usuario not in usuarios:
+def login_user():
+    user = simpledialog.askstring("Iniciar Sesion", "Nombre de usuario:")
+    if user not in users:
         messagebox.showerror("Error", "Usuario no encontrado.")
         return None
-    contraseña = simpledialog.askstring("Login", "Contraseña:", show='*')
-    if usuarios[usuario]['contraseña'] == contraseña:
-        return usuario
+    password = simpledialog.askstring("Iniciar Sesion", "Contrasena:", show='*')
+    if users[user]['password'] == password:
+        return user
     else:
-        messagebox.showerror("Error", "Contraseña incorrecta.")
+        messagebox.showerror("Error", "Contrasena incorrecta.")
         return None
 
 # Funciones de manejo de contraseñas
-def añadir_contraseña(usuario):
-    contraseñas = cargar_contraseñas(usuario)
-    servicio = simpledialog.askstring("Añadir Contraseña", "Nombre del Servicio (Ej. Gmail, Instagram):")
-    usuario_servicio = simpledialog.askstring("Añadir Contraseña", "Usuario del servicio:")
-    contraseña = simpledialog.askstring("Añadir Contraseña", "Contraseña:", show='*')
+def add_password(user):
+    passwords = load_passwords(user)
+    service = simpledialog.askstring("Agregar Contrasena", "Servicio (e.g., Gmail, Instagram):")
+    service_user = simpledialog.askstring("Agregar Contrasena", "Nombre de Usuario del Servicio:")
+    password = simpledialog.askstring("Agregar Contrasena", "Contrasena:", show='*')
 
-    if servicio and usuario_servicio and contraseña:
-        fernet = Fernet(clave)
-        id_unico = str(len(contraseñas) + 1)
-        contraseñas[id_unico] = {
-            'servicio': servicio,
-            'usuario': usuario_servicio,
-            'contraseña': fernet.encrypt(contraseña.encode()).decode()
+    if service and service_user and password:
+        fernet = Fernet(key)
+        unique_id = str(len(passwords) + 1)
+        passwords[unique_id] = {
+            'service': service,
+            'username': service_user,
+            'password': fernet.encrypt(password.encode()).decode()
         }
-        guardar_contraseñas(usuario, contraseñas)
-        messagebox.showinfo("Éxito", f"Contraseña añadida con ID: {id_unico}")
+        save_passwords(user, passwords)
+        messagebox.showinfo("Exito", f"Contrasena agregada con ID: {unique_id}")
     else:
         messagebox.showerror("Error", "Todos los campos son obligatorios.")
 
-def mostrar_contraseñas(usuario):
-    contraseñas = cargar_contraseñas(usuario)
-    if not contraseñas:
-        messagebox.showinfo("Sin Contraseñas", "No tienes contraseñas guardadas.")
+def show_passwords(user):
+    passwords = load_passwords(user)
+    if not passwords:
+        messagebox.showinfo("Sin Contrasenas", "No tienes contrasenas guardadas.")
         return
     
-    ventana_mostrar = tk.Toplevel(root)
-    ventana_mostrar.title("Contraseñas Guardadas")
+    show_window = tk.Toplevel(root)
+    show_window.title("Contrasenas Guardadas")
+    show_window.geometry("600x400")
 
-    tree = ttk.Treeview(ventana_mostrar, columns=("ID", "Servicio", "Usuario", "Contraseña"), show='headings')
+    tree = ttk.Treeview(show_window, columns=("ID", "Servicio", "Usuario", "Contrasena"), show='headings')
     tree.heading("ID", text="ID")
     tree.heading("Servicio", text="Servicio")
     tree.heading("Usuario", text="Usuario")
-    tree.heading("Contraseña", text="Contraseña")
-    
-    fernet = Fernet(clave)
-    for id_unico, datos_item in contraseñas.items():
-        servicio = datos_item['servicio']
-        usuario_ = datos_item['usuario']
-        contraseña = fernet.decrypt(datos_item['contraseña'].encode()).decode()
-        tree.insert("", tk.END, values=(id_unico, servicio, usuario_, contraseña))
-    
+    tree.heading("Contrasena", text="Contrasena")
     tree.pack(expand=True, fill='both')
 
-# Generar una contraseña aleatoria y agregarla
-def generar_contraseña(usuario):
-    longitud = simpledialog.askinteger("Generar Contraseña", "Longitud de la contraseña:", minvalue=8, maxvalue=32)
-    if longitud:
-        caracteres = string.ascii_letters + string.digits + string.punctuation
-        contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
-        servicio = simpledialog.askstring("Generar Contraseña", "Nombre del Servicio (Ej. Gmail, Instagram):")
-        contraseñas = cargar_contraseñas(usuario)
-        fernet = Fernet(clave)
-        id_unico = str(len(contraseñas) + 1)
-        contraseñas[id_unico] = {
-            'servicio': servicio,
-            'usuario': 'Generada',
-            'contraseña': fernet.encrypt(contraseña.encode()).decode()
-        }
-        guardar_contraseñas(usuario, contraseñas)
-        messagebox.showinfo("Contraseña Generada", f"Contraseña generada: {contraseña}\nSe ha añadido a tu lista de contraseñas.")
-    else:
-        messagebox.showerror("Error", "Longitud no válida.")
+    fernet = Fernet(key)
+    for unique_id, item_data in passwords.items():
+        service = item_data['service']
+        username = item_data['username']
+        password = fernet.decrypt(item_data['password'].encode()).decode()
+        tree.insert("", tk.END, values=(unique_id, service, username, password))
 
-# Configurar la interfaz gráfica
-clave = cargar_clave()
-usuarios = cargar_datos()
+    # Agregar menu contextual al Treeview
+    tree.bind("<Button-3>", lambda event: show_context_menu(event, tree))
+
+# Generar contraseña y agregarla
+def generate_password(user):
+    length = simpledialog.askinteger("Generar Contrasena", "Longitud de la contrasena:", minvalue=8, maxvalue=32)
+    if length:
+        characters = string.ascii_letters + string.digits + string.punctuation
+        password = ''.join(random.choice(characters) for _ in range(length))
+        service = simpledialog.askstring("Generar Contrasena", "Servicio (e.g., Gmail, Instagram):")
+        passwords = load_passwords(user)
+        fernet = Fernet(key)
+        unique_id = str(len(passwords) + 1)
+        passwords[unique_id] = {
+            'service': service,
+            'username': 'Generado',
+            'password': fernet.encrypt(password.encode()).decode()
+        }
+        save_passwords(user, passwords)
+        messagebox.showinfo("Contrasena Generada", f"Contrasena generada: {password}\nSe ha agregado a tu lista.")
+    else:
+        messagebox.showerror("Error", "Longitud no valida.")
+
+# Menu contextual para Treeview
+def show_context_menu(event, tree):
+    menu = tk.Menu(root, tearoff=0)
+    menu.add_command(label="Copiar", command=lambda: copy_selected_item(tree))
+    menu.tk_popup(event.x_root, event.y_root)
+
+def copy_selected_item(tree):
+    try:
+        selected_item = tree.focus()
+        item_values = tree.item(selected_item, "values")
+        if item_values:
+            password = item_values[3]  # Copiar la contrasena
+            root.clipboard_clear()
+            root.clipboard_append(password)
+            messagebox.showinfo("Copiado", "Contrasena copiada al portapapeles.")
+    except IndexError:
+        messagebox.showerror("Error", "No se selecciono ningun elemento.")
+
+# Configuracion de la GUI
+key = load_key()
+users = load_data()
 
 root = tk.Tk()
 root.title("GNU-PasswdManager")
 root.geometry("400x400")
 
-def abrir_login():
-    usuario = login_usuario()
-    if usuario:
-        frame_login.pack_forget()
-        mostrar_panel(usuario)
+def open_login():
+    user = login_user()
+    if user:
+        login_frame.pack_forget()
+        show_panel(user)
 
-def mostrar_panel(usuario):
-    frame_panel = tk.Frame(root)
-    frame_panel.pack(pady=20)
+def show_panel(user):
+    panel_frame = tk.Frame(root)
+    panel_frame.pack(pady=20)
 
-    titulo = tk.Label(frame_panel, text="GNU-PasswdManager", font=("Arial", 16, "bold"))
-    titulo.pack(pady=10)
+    title = tk.Label(panel_frame, text="GNU-PasswdManager", font=("Arial", 16, "bold"))
+    title.pack(pady=10)
 
-    btn_añadir = tk.Button(frame_panel, text="Añadir Contraseña", command=lambda: añadir_contraseña(usuario), width=25)
-    btn_añadir.pack(pady=5)
+    add_button = tk.Button(panel_frame, text="Agregar Contrasena", command=lambda: add_password(user), width=25)
+    add_button.pack(pady=5)
 
-    btn_generar = tk.Button(frame_panel, text="Generar Contraseña", command=lambda: generar_contraseña(usuario), width=25)
-    btn_generar.pack(pady=5)
+    generate_button = tk.Button(panel_frame, text="Generar Contrasena", command=lambda: generate_password(user), width=25)
+    generate_button.pack(pady=5)
 
-    btn_mostrar = tk.Button(frame_panel, text="Mostrar Contraseñas", command=lambda: mostrar_contraseñas(usuario), width=25)
-    btn_mostrar.pack(pady=5)
+    show_button = tk.Button(panel_frame, text="Mostrar Contrasenas", command=lambda: show_passwords(user), width=25)
+    show_button.pack(pady=5)
 
-    btn_salir = tk.Button(frame_panel, text="Cerrar Sesión", command=root.quit, width=25)
-    btn_salir.pack(pady=5)
+    exit_button = tk.Button(panel_frame, text="Cerrar Sesion", command=root.quit, width=25)
+    exit_button.pack(pady=5)
 
-frame_login = tk.Frame(root)
-frame_login.pack(pady=20)
+login_frame = tk.Frame(root)
+login_frame.pack(pady=20)
 
-btn_login = tk.Button(frame_login, text="Login", command=abrir_login, width=25)
-btn_login.pack(pady=5)
+login_button = tk.Button(login_frame, text="Iniciar Sesion", command=open_login, width=25)
+login_button.pack(pady=5)
 
-btn_registrar = tk.Button(frame_login, text="Registrar Usuario", command=registrar_usuario, width=25)
-btn_registrar.pack(pady=5)
+register_button = tk.Button(login_frame, text="Registrar Usuario", command=register_user, width=25)
+register_button.pack(pady=5)
 
 root.mainloop()
 
