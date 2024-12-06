@@ -147,7 +147,7 @@ Then, Execute the script
 python GNU-PasswdManager.py
 ```
 
-On linux/Mac
+## On linux/Mac
 
 ```bash
 python3 GNU-PasswdManager.py
