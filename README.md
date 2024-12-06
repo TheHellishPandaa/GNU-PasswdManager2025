@@ -52,6 +52,45 @@ python3 -m ensurepip --upgrade
 ````
 This should return the version of Python you just installed.
 
+# Installing Python on Linux
+
+Follow these steps to install Python on your Linux system:
+
+## 1. Check if Python is Already Installed
+
+Most Linux distributions come with Python pre-installed. To check if Python is installed, open a **terminal** and run:
+
+```bash
+python3 --version
+````
+
+## 2. Install Python
+
+Run the following command to install Python 3:
+
+For Debian-based distributions (e.g., Ubuntu):
+
+```
+sudo apt install -y python3 python3-pip
+````
+For Red Hat-based distributions (e.g., Fedora, CentOS):
+
+````
+sudo dnf install -y python3 python3-pip
+````
+## 3. Verify the Installation
+
+Once the installation is complete, verify it by checking the Python version:
+
+````
+python3 --version
+````
+Also, check if pip is installed:
+
+````
+pip3 --version
+````
+
 ## Run the Installer (for Windows 10/11)
 
 Run the installer you downloaded (it will be a .exe file).
