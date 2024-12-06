@@ -64,6 +64,17 @@ On Windows 10/11 Open the Command Prompt/PowerShell in Windows (you can search f
 python GNU-PasswdManager.py
 ```
 
+For Spannish Language use the "esp" folder.
+```bash
+cd esp
+```
+
+Then, Execute the script
+
+``````bash
+python GNU-PasswdManager.py
+```
+
 On linux/Mac
 
 ```bash
