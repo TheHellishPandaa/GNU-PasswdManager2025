@@ -157,3 +157,5 @@ python3 GNU-PasswdManager.py
 ## LISENCE
 
 This program is released under GNU General Public License 
+
+© 2025 Jaime Galvez Martinez (GNU General Public License)
