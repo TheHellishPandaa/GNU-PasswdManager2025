@@ -44,7 +44,12 @@ After the installation is complete, you can verify that Python is installed corr
 ```
 python3 --version
 ```
+4. Install and Use pip
 
+pip is the Python package manager used to install libraries and dependencies. If pip is not installed automatically, you can install or upgrade it by running:
+````
+python3 -m ensurepip --upgrade
+````
 This should return the version of Python you just installed.
 
 ## Run the Installer (for Windows 10/11)
