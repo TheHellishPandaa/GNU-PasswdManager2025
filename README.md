@@ -71,7 +71,7 @@ cd esp
 
 Then, Execute the script
 
-``````bash
+```bash
 python GNU-PasswdManager.py
 ```
 
