@@ -23,6 +23,35 @@ Run the installer you downloaded (it will be a .exe file).
   1. Click on "Install Now" to start the standard installation.
 
   2. The installation process will begin. Wait for it to complete. Once finished, you will see a message saying "Setup was successful".
+     
+## Verify the Installation
+
+ Open the Command Prompt in Windows (you can search for "cmd" in the Start menu).
+
+  Type the following command to verify that Python is installed correctly:
+```bash
+
+python --version
+```
+
+Or you can also try:
+```bash
+python3 --version
+```
+If Python is installed correctly, you should see something like:
+
+Python 3.X.X
+
+ (Where "3.X.X" is the version you installed).
+ 
+ ## Verify pip (Python Package Manager)
+
+pip is the tool used to install Python packages. Check if pip is installed by running:
+
+```bash
+pip --version
+```
+If it shows the version of pip, it is installed correctly. If not, you can install pip manually, but it usually comes installed with Python.
 
 ## LISENCE
 
