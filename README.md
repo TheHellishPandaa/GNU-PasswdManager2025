@@ -19,7 +19,35 @@ pip install cryptography
 1. Go to the official Python website: https://www.python.org/downloads/.
 2. On the main page, you will see a button to download the latest stable version of Python. Click on the button that says "Download Python X.X.X" (where "X.X.X" is the version number).
 
-## Run the Installer
+# Installing Python on macOS
+
+Follow these steps to install Python on your macOS machine:
+
+## 1. Check if Python is Already Installed
+
+Before installing Python, check if it's already installed on your system. Open the **Terminal** (you can find it by searching in Spotlight or in `Applications > Utilities`), and run the following command:
+
+```bash
+python3 --version
+```
+Step 2: Install Python
+
+Once Homebrew is installed, you can install Python by running the following command in the Terminal:
+```
+brew install python
+```
+Homebrew will install the latest version of Python 3 and pip (Python's package installer).
+
+3. Verify the Installation
+
+After the installation is complete, you can verify that Python is installed correctly by checking the version again:
+```
+python3 --version
+```
+
+This should return the version of Python you just installed.
+
+## Run the Installer (for Windows 10/11)
 
 Run the installer you downloaded (it will be a .exe file).
     
