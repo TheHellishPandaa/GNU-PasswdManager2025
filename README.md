@@ -6,7 +6,10 @@ A simple password manager with a graphical user interface built in Python.
 - Graphical interface with `tkinter`.
 - Random password generation.
 - Secure storage in a JSON file.
-
+- User Registration: We added a registration feature to create new users.
+- User Login: Allows users to authenticate with their username and password.
+- Authentication and Restricted Access: Each user can only view and manage their own passwords.
+  
 ## Requirements
 Install cryptography dependencies using:
 ```bash
