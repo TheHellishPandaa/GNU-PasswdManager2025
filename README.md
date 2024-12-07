@@ -16,6 +16,7 @@ Install cryptography dependencies using:
 ```bash
 pip install cryptography
 ```
+
 ## Install Python on Windows 10/11:
 1. Go to the official Python website: https://www.python.org/downloads/.
 2. On the main page, you will see a button to download the latest stable version of Python. Click on the button that says "Download Python X.X.X" (where "X.X.X" is the version number).
@@ -65,7 +66,7 @@ Most Linux distributions come with Python pre-installed. To check if Python is i
 python3 --version
 ````
 
-## 2. Install Python
+## 2. Install Python And Dependencies (Linux)
 
 Run the following command to install Python 3:
 
@@ -74,6 +75,10 @@ For Debian-based distributions (e.g., Ubuntu):
 ```
 sudo apt install -y python3 python3-pip
 ````
+Intall python3-tk
+```
+sudo apt-get install python3-tk
+```
 For Red Hat-based distributions (e.g., Fedora, CentOS):
 
 ````
