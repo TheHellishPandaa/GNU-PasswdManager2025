@@ -159,7 +159,7 @@ python GNU-PasswdManager.py
 python3 GNU-PasswdManager.py
 ```
 
-## LISENCE
+## LICENSE
 
 This program is released under GNU General Public License 
 
