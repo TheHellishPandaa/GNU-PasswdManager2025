@@ -7,7 +7,7 @@ GNU-PasswdManager is a simple password manager built using Python and Tkinter. I
 - Graphical interface with `tkinter`.
 - Random password generation.
 - Secure storage in a JSON file.
-- User Registration: We added a registration feature to create new users.
+- User Registration: added a registration feature to create new users.
 - User Login: Allows users to authenticate with their username and password.
 - Authentication and Restricted Access: Each user can only view and manage their own passwords.
   
