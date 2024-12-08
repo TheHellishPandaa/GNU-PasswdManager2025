@@ -183,13 +183,13 @@ def show_panel(user):
     title.pack(pady=10)
 
     add_button = tk.Button(panel_frame, text="Add Password", command=lambda: add_password(user), width=25)
-    add_button.pack(pady=5)
+    add_button.pack(pady=6)
 
-    generate_button = tk.Button(panel_frame, text="Generate Password", command=lambda: generate_password(user), width=25)
-    generate_button.pack(pady=5)
+    generate_button = tk.Button(panel_frame, text="Generate Secure Password", command=lambda: generate_password(user), width=25)
+    generate_button.pack(pady=6)
 
     show_button = tk.Button(panel_frame, text="Show Passwords", command=lambda: show_passwords(user), width=25)
-    show_button.pack(pady=5)
+    show_button.pack(pady=6)
 
     exit_button = tk.Button(panel_frame, text="Logout", command=root.quit, width=25)
     exit_button.pack(pady=5)
