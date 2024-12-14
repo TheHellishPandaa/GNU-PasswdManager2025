@@ -7,7 +7,9 @@ import os
 import random
 import string
 
-# Password management functions
+
+# Password management functions 
+#Generate key function
 def generate_key():
     return Fernet.generate_key()
 
