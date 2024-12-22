@@ -9,9 +9,11 @@ import string
 
 
 # Password management functions 
-#Generate key function
+# Generate key function
+
 def generate_key():
     return Fernet.generate_key()
+# load key function
 
 def load_key(filename='key.key'):
     if not os.path.exists(filename):
