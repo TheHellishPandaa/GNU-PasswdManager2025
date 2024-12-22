@@ -1,3 +1,7 @@
+# Passwor Manger for save, generate, show saves password and manage password
+# Date: 22/12/2024
+# Jaime Galvez Martinez
+
 # -*- coding: utf-8 -*-
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
