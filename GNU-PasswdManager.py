@@ -1,4 +1,4 @@
-# Passwor Manger for save, generate, show saves password and manage password
+# Password Mangaer for save, generate, show saves password and manage password
 # Date: 22/12/2024
 # Jaime Galvez Martinez
 
