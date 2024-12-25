@@ -16,6 +16,11 @@ Install cryptography dependencies using:
 ```bash
 pip install cryptography
 ```
+## Clone this repository
+
+```bash
+git clone https://github.com/TheHellishPandaa/GNU-PasswdManager2025.git
+```
 
 ## Install Python on Windows 10/11:
 1. Go to the official Python website: https://www.python.org/downloads/.
