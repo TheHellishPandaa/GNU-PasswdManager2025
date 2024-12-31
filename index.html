@@ -17,16 +17,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-/* Contenedor principal */
 .container {
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+    background: rgba(255, 255, 255, 0.1); 
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 0 15%; 
+    width: 70%; 
 }
 
 a {
@@ -40,7 +41,6 @@ a {
     transition: all 0.3s ease-in-out;
 }
 
-
 a:hover {
     background-color: #ffcc00;
     color: #1e3c72; 
@@ -48,7 +48,6 @@ a:hover {
     box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5);
 }
 
-/* Estilo del título */
 h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -57,7 +56,6 @@ h1 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Efecto animado al cargar */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -72,6 +70,7 @@ h1 {
 .container {
     animation: fadeIn 1s ease-in-out;
 }
+
     </style>
 </head>
 <body>
