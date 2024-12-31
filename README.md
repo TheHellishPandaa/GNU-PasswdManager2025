@@ -3,7 +3,7 @@ GNU-PasswdManager is a simple password manager built using Python and Tkinter. I
 
 ## Fix bugs
 
-- The `users.json` file, which contains all the master passwords, is automatically generated with superuser permissions, that is, only the `sudo` user can read and write to the file, for that reason, the program. py must be run with superuser permissions (sudo)
+- The `users.json` file, which contains all the master passwords, is automatically generated with superuser permissions, that is, only the `sudo` user can read and write to the file, for that reason, the program .py, must be run with superuser permissions (sudo)
 
 ## Features
 - Password encryption using `cryptography`.
