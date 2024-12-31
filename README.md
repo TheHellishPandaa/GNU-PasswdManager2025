@@ -3,7 +3,7 @@ GNU-PasswdManager is a simple password manager built using Python and Tkinter. I
 
 ## Fix bugs
 
-- 
+- Comming Soon
 
 ## Features
 - Password encryption using `cryptography`.
