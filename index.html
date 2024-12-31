@@ -7,53 +7,71 @@
        <link rel="icon" href="icons8-lock-48.png" type="image/png">
     <title>GNU-PasswdManager - Download</title>
     <style>
-         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .download-button {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-top: 15px;
-        }
-        .download-button:hover {
-            background-color: #218838;
-        }
-        .intro-text {
-            margin-top: 20px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .download-section {
-            margin-top: 30px;
-        }
-         a {
-            color: white;
-            text-decoration: none; 
-        }
-        a:hover {
-            color: lightgray; 
-        }
+    
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298); 
+    color: #ffffff; 
+    font-family: 'Arial', sans-serif; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+a {
+    color: #ffcc00; 
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #ffcc00;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+a:hover {
+    background-color: #ffcc00;
+    color: #1e3c72; 
+    transform: scale(1.1); 
+    box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5);
+}
+
+/* Estilo del título */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto animado al cargar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
     </style>
 </head>
 <body>
