@@ -82,7 +82,54 @@ header {
     width: 50%; 
     animation: fadeIn 1s ease-in-out;
     height: 500px;
-}
+}        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            a {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+
+            .container, header {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            h3 {
+                font-size: 1em;
+            }
+
+            a {
+                font-size: 0.9em;
+                padding: 5px 10px;
+            }
+
+            pre {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+        }
 
     </style>
 </head>
