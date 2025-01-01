@@ -7,6 +7,12 @@
     <link rel="icon" href="icons8-lock-48.png" type="image/png">
     <title>GNU-PasswdManager - Download</title>
     <style>
+        .visit-counter {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ffcc00;
+            font-weight: bold;
+        }
         body {
             background: linear-gradient(135deg, #1e3c72, #2a5298); 
             color: #ffffff; 
@@ -151,6 +157,7 @@
     <h3>Manage your passwords with encryption and a user-friendly GUI.</h3>
     <p><a href="https://github.com/TheHellishPandaa/GNU-PasswdManager2025" target="_blank">&COPY;2025 Jaime Galvez Martinez</a></p>
     <p>This project is released under GNU License</p>
+    <p class="visit-counter">Page visited: <span id="visit-count"></span> times</p>
 </header>
 <div class="container">
     <h2>Download the Latest Version</h2>
@@ -166,5 +173,11 @@
     <h3>Download the Source Code:</h3>
     <a href="https://github.com/TheHellishPandaa/GNU-PasswdManager2025/blob/main/GNU-PasswdManager.py" target="_blank" download>Download Source Code</a>
 </div>
+    <script>
+    // Increment the visit counter in localStorage
+    const visitCount = localStorage.getItem('visitCount') || 0;
+    localStorage.setItem('visitCount', parseInt(visitCount) + 1);
+    document.getElementById('visit-count').textContent = localStorage.getItem('visitCount');
+</script>
 </body>
 </html>
