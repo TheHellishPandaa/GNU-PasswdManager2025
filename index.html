@@ -14,10 +14,11 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            flex-direction: row; /* Cambiado a fila */
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
+            gap: 20px; /* Espaciado entre elementos */
         }
 
         header {
@@ -26,10 +27,8 @@
             background: rgba(255, 255, 255, 0.1); 
             border-radius: 15px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-            width: 90%; 
-            max-width: 700px;
-            margin-bottom: 20px; /* Add spacing between header and container */
-            animation: fadeInHeader 1s ease-in-out;
+            width: 30%; 
+            animation: fadeIn 1s ease-in-out;
         }
 
         .container {
@@ -38,9 +37,8 @@
             background: rgba(255, 255, 255, 0.1); 
             border-radius: 15px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 1400px;
-            animation: fadeInContainer 1.5s ease-in-out;
+            width: 60%;
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1, h2, h3 {
@@ -81,7 +79,7 @@
             overflow-x: auto;
         }
 
-        @keyframes fadeInHeader {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(-20px);
@@ -92,19 +90,12 @@
             }
         }
 
-        @keyframes fadeInContainer {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
             h1 {
                 font-size: 2em;
             }
@@ -123,8 +114,7 @@
             }
 
             header, .container {
-                width: 95%;
-                padding: 15px;
+                width: 90%;
             }
         }
 
