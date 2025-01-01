@@ -8,81 +8,89 @@
     <title>GNU-PasswdManager - Download</title>
     <style>
     
-body {
-    background: linear-gradient(135deg, #1e3c72, #2a5298); 
-    color: #ffffff; 
-    font-family: 'Arial', sans-serif; 
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+  body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298); 
+            color: #ffffff; 
+            font-family: 'Arial', sans-serif; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-.container {
-    text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1); 
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    margin: 0 5%; 
-    animation: fadeIn 1s ease-in-out;
-    width: 1400px;
-    height: 650px;
-}
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%; 
+            max-width: 700px;
+        }
 
-a {
-    color: #ffcc00; 
-    font-weight: bold;
-    font-size: 1.2em;
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 2px solid #ffcc00;
-    border-radius: 25px;
-    transition: all 0.3s ease-in-out;
-}
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 1400px;
+        }
 
-a:hover {
-    background-color: #ffcc00;
-    color: #1e3c72; 
-    transform: scale(1.1); 
-    box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5);
-}
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
+        a {
+            color: #ffcc00; 
+            font-weight: bold;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #ffcc00;
+            border-radius: 25px;
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            margin: 10px 0;
+        }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-}
+        a:hover {
+            background-color: #ffcc00;
+            color: #1e3c72; 
+            transform: scale(1.1); 
+            box-shadow: 0px 5px 15px rgba(255, 204, 0, 0.5);
+        }
 
-header {
-    animation: fadeIn 1s ease-in-out;
-    margin: 2px;
-    text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1); 
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    margin: 0 15%; 
-    width: 50%; 
-    animation: fadeIn 1s ease-in-out;
-    height: 500px;
-}        /* Responsive Design */
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -101,7 +109,7 @@ header {
                 padding: 8px 15px;
             }
 
-            .container, header {
+            header, .container {
                 width: 95%;
                 padding: 15px;
             }
@@ -130,7 +138,6 @@ header {
                 padding: 8px;
             }
         }
-
     </style>
 </head>
 <body>
