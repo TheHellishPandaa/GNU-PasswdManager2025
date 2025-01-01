@@ -1,7 +1,7 @@
 # GNU-PasswdManager 2025
 GNU-PasswdManager is a simple password manager built using Python and Tkinter. It allows users to store, generate, and manage their passwords securely. The passwords are encrypted using the Fernet symmetric encryption method from the `cryptography` library.
 
-## Download The Project. For Linux/MacOS/Windows7/10/11
+## Download The Project. For Linux/MacOS/Windows 7/10/11
 https://thehellishpandaa.github.io/GNU-PasswdManager2025/
 ## Fix bugs
 
