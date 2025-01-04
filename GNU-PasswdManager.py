@@ -1,6 +1,6 @@
 # AUTHOR: JAIME GALVEZ MARTINEZ
 # DATE: 31/12/2024
-# VERSION: 0.2
+# VERSION: 0.3
 # For User Manual, please read the `readme` file
 # This project is released under GNU (General Public License). All rights reserved.
 # Password Manager written 100% in Python
